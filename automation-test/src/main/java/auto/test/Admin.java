@@ -1,4 +1,4 @@
-package com.ericsson.ct.cloud.nfvi;
+package auto.test;
 
 public class Admin {
 	private String procedures;

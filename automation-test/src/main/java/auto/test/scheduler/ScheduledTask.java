@@ -1,12 +1,14 @@
 package com.ericsson.ct.cloud.nfvi.scheduler;
 
-import com.ericsson.ct.cloud.nfvi.Admin;
-import com.ericsson.ct.cloud.nfvi.alarm.HandleAlarmBean;
 import com.ericsson.ct.cloud.nfvi.mapper.AdminMapper;
-import com.ericsson.ct.cloud.nfvi.mapper.HandleAlarmMapper;
 import com.ericsson.ct.cloud.nfvi.selenium.ActionStep;
 import com.ericsson.ct.cloud.nfvi.selenium.Browser;
 import com.ericsson.ct.cloud.nfvi.selenium.Procedure;
+
+import auto.test.Admin;
+import auto.test.alarm.HandleAlarmBean;
+import auto.test.mapper.HandleAlarmMapper;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;

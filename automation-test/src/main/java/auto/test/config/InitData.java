@@ -1,13 +1,15 @@
 package com.ericsson.ct.cloud.nfvi.config;
 
-import com.ericsson.ct.cloud.nfvi.Admin;
-import com.ericsson.ct.cloud.nfvi.EnvironmentContext;
 import com.ericsson.ct.cloud.nfvi.mapper.AdminMapper;
-import com.ericsson.ct.cloud.nfvi.mapper.HandleAlarmMapper;
-import com.ericsson.ct.cloud.nfvi.mapper.OriginAlarmMapper;
+
+import auto.test.Admin;
+import auto.test.EnvironmentContext;
+import auto.test.mapper.HandleAlarmMapper;
+import auto.test.mapper.OriginAlarmMapper;
+import auto.test.snmp.MultiThreadTrapReceiver;
+
 import javax.annotation.PostConstruct;
 
-import com.ericsson.ct.cloud.nfvi.snmp.MultiThreadTrapReceiver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

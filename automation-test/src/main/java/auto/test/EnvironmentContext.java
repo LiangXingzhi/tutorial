@@ -1,4 +1,4 @@
-package com.ericsson.ct.cloud.nfvi;
+package auto.test;
 
 import com.ericsson.ct.cloud.nfvi.selenium.Procedure;
 

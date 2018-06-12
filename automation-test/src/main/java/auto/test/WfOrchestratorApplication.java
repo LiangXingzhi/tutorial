@@ -1,4 +1,4 @@
-package com.ericsson.ct.cloud.nfvi;
+package auto.test;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

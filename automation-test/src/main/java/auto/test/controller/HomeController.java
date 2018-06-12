@@ -1,11 +1,12 @@
 package com.ericsson.ct.cloud.nfvi.controller;
 
-import com.ericsson.ct.cloud.nfvi.Admin;
-import com.ericsson.ct.cloud.nfvi.EnvironmentContext;
-import com.ericsson.ct.cloud.nfvi.alarm.OriginAlarmBean;
-import com.ericsson.ct.cloud.nfvi.alarm.OriginAlarmService;
 import com.ericsson.ct.cloud.nfvi.mapper.AdminMapper;
 import com.ericsson.ct.cloud.nfvi.selenium.Procedure;
+
+import auto.test.Admin;
+import auto.test.EnvironmentContext;
+import auto.test.alarm.OriginAlarmBean;
+import auto.test.alarm.OriginAlarmService;
 
 import java.util.ArrayList;
 import java.util.List;
