@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:replace="fragments::commonCss" />
+<body>
+<div th:replace="fragments::nav (class1='active', class2='')"></div>
+<div class="container">
+    <div class="page-header">
+        <h3>
+            告警基本信息页<small></small>
+        </h3>
+    </div>
+    <div class="row">
+        <input type="text" id="search" placeholder="Search by oid, Source or msg" class="form-control" th:value="${search}" style="margin: 15px; width:300px; float: right">
+    </div>
+    <table class="table table-hover table-bordered table-striped">
+        <tr>
+            <th>TraceId</th>
+            <th>oid</th>
+            <th>Source</th>
+            <th>msg</th>
+            <th>alarm_time</th>
+            <th>issue_time</th>
+        </tr>
+        <tr th:each="alarm : ${alarms}">
+            <td th:text="${alarm.traceId}"></td>
+            <td th:text="${alarm.alarm_oid}"></td>
+            <td th:text="${alarm.source}"></td>
+            <td th:text="${alarm.msg}"></td>
+            <td th:text="${alarm.alarm_time}"></td>
+            <td th:text="${alarm.issue_time}"></td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(alarms)}">
+            <td colspan="6">没有记录</td>
+        </tr>
+    </table>
+
+    <ul class="pagination">
+        <li th:class="${pageNum <= 1}? 'disabled' : ''">
+            <a  th:if="${pageNum <= 1}" class="disabled'"  href="javascript:void(0)" >&laquo;</a>
+            <a  th:if="${pageNum > 1}"  class="active" onclick="go(this)"  href="javascript:void(0)"  th:data-ref="@{'/alarm?pageNum='+${pageNum-1}}" >&laquo;</a>
+        </li>
+        <li th:each="page: ${pages}"   th:class="${page==pageNum}? 'active' : ''">
+            <a  th:text="${page}" href="javascript:void(0)"  onclick="go(this)"  th:data-ref="@{'/alarm?pageNum='+${page}}"></a></li>
+        <li th:class="${pageNum < #lists.size(pages)}? '': 'disabled' ">
+            <a th:if="${pageNum < #lists.size(pages)}" href="javascript:void(0)" onclick="go(this)"  th:data-ref="@{'/alarm?pageNum='+${pageNum+1}}"  >&raquo;</a>
+            <a th:if="${pageNum >= #lists.size(pages)}" href="javascript:void(0)" class="disabled" >&raquo;</a>
+        </li>
+    </ul>
+
+    <footer th:replace="fragments::footer"></footer>
+</div>
+<script type="text/javascript">
+$("#search").keyup(function (event) {
+    if(event.keyCode == 13) {
+		go();
+    }
+})
+
+function go(ele) {
+	if(!ele) {
+		ele = $("ul.pagination>li.active>a")[0];
+	}
+	var href = $(ele).attr("data-ref");
+	var search = $.trim($("#search").val());
+	if(search) {
+		href = href + "&search="+search;
+	}
+	window.location.href=href;
+}
+</script>
+</body>
+</html>

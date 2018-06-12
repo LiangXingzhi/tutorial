@@ -1,0 +1,94 @@
+server: 
+  port: 8088
+  servlet:
+    context-path: /wf-orchestrator
+
+spring: 
+  thymeleaf: 
+    cache: false
+  messages: 
+    basename: messages
+  datasource: 
+    name: wf_orchestrator
+    url: jdbc:derby:out/wf_orchestrator;create=true  
+    type: com.alibaba.druid.pool.DruidDataSource  
+    driver-class-name: org.apache.derby.jdbc.EmbeddedDriver  
+    initialSize: 5  
+    minIdle: 5  
+    maxActive: 20  
+    maxWait: 60000  
+    timeBetweenEvictionRunsMillis: 60000  
+    minEvictableIdleTimeMillis: 300000  
+    filters: stat  
+    validationQuery: select 1 from sysibm.sysdummy1
+    testWhileIdle: true  
+    testOnBorrow: false  
+    testOnReturn: false  
+    poolPreparedStatements: true  
+    maxOpenPreparedStatements: 20  
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000  
+
+logging: 
+    config: classpath:logback.xml
+
+webdriver:
+  gecko:
+    driver:
+  chrome:
+    driver: C:\\catools\\chromedriver.exe
+nfvi: 
+  procedures:
+    - name: ne
+      interestedAlarms: ne
+      actionSteps: 
+        - name: get_page
+          action: get
+          by:
+          target: http://vnfuser:Clouduser123@172.168.110.15/index.html#workflows/workflow/vHSS.--.Scale-Out%20vHSS%20VNF/startworkflow/vHSS.--.Scale-Out%20vHSS%20VNF?goto=#workflows/workflow/vHSS.--.Scale-Out%20vHSS%20VNF
+#          target: http://admin:admin123@localhost:8088/wf-orchestrator/index
+        - name: eval_instanceName
+          action: eval
+          by: className
+          target: elWfmgrWidgets-WfStartForm-instanceName-input
+        - name: submit_instanceName
+          action: click
+          by: xpath
+          target: //button[contains(text(),'Submit')]
+        - name: click_instanceName
+          action: click
+          by: xpath
+          target: //button[contains(text(),"{{eval_instanceName}}")]
+        - name: click_detail
+          action: click
+          by: xpath
+          target: //a[contains(text(),'View Details')]
+        - name: refresh_detail
+          action: refresh
+          by:
+          target:
+        - name: clickSelectVNFButton
+          action: click
+          by: cssSelector
+          target: button.ebSelect-header
+        - name: selectVNF
+          action: click
+          by: xpath
+          target: By.xpath("//div[contains(text(), 'vHSS01-1.19')]")
+        - name: input_vm_quantity
+          action: eval
+          by: cssSelector
+          target: input.ebInput_width_xLong
+          value: 2
+        - name: submit_detail
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+
+  jobs:
+    fixedDelay: 10000
+
+
+snmp:
+  port: 2009
+  ip: 127.0.0.1
+#  ip: 146.11.42.83

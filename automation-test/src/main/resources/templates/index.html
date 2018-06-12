@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:replace="fragments::commonCss" />
+<body>
+	<div th:replace="fragments::nav (class1='active', class2='')"></div>
+	<div class="container">
+		<div class="page-header">
+			<h3>
+				告警基本信息页<small></small>
+			</h3>
+		</div>
+		
+		<table class="table table-hover table-bordered table-striped">
+			<caption>告警列表</caption>
+			<tr>
+				<th>TraceId</th>
+				<th>Source</th>
+				<th>alarm_oid</th>
+				<th>msg</th>
+				<th>alarm_time</th>
+			</tr>
+			<tr th:each="alarm : ${originAlarmBeanList}">
+				<td th:text="${alarm.traceId}"></td>
+				<td th:text="${alarm.source}"></td>
+				<td th:text="${alarm.alarm_oid}"></td>
+				<td th:text="${alarm.msg}"></td>
+				<td th:text="${alarm.alarm_time}"></td>
+				<!-- <td><a class="btn btn-link" th:href="${'/ne/'+ element.elementName}" role="button">管理</a></td> -->
+				<!--<td><a class="btn btn-link"-->
+					<!--th:href="${'/ne/'+ elementStat.index}" role="button">管理</a></td>-->
+			</tr>
+			<tr th:if="${#lists.isEmpty(originAlarmBeanList)}">
+				<td colspan="6">没有记录</td>
+			</tr>
+		</table>
+当前步骤 :<span th:text="${currentStep}"></span>
+		<a href="/alarm?step=1">第1步</a> <a href="/wf-orchestrator/alarm?step=2">第2步</a> <a
+			href="/alarm?step=3">第3步</a> <a href="/alarm?step=4">第4步</a> <a
+			href="/alarm?step=5">第5步</a> <a href="/alarm?step=6">第6步</a>
+
+		<hr>
+
+
+		<form action="/index" id="aform" name="aform"></form>
+
+		<input th:if="${currentStep == 1}"
+			class="ebInput ebInput_width_xLong elWfmgrWidgets-WfStartForm-instanceName-input ebInput_labeled_top ebInput_status_none"
+			placeholder="Instance name must be unique." required="true"
+			value="Scale-Out VNF_1524108475" type="text">
+
+		<table th:if="${currentStep == 4}" class="table table-hover table-bordered table-striped">
+			<tr class="ebTableRow ebTableRow_highlighted"
+				ondblclick="document.forms['aform'].submit()">
+				<td>Scale-Out VNF_1524108475</td>
+				<td class="elWfmgrWidgets-wActiveTasksCell"><i
+					class="ebIcon ebIcon_user"></i> <span
+					class="elWfmgrWidgets-wActiveTasksCell-caption">1</span></td>
+				<td class="elWfmgrWidgets-wProgressBarCell">
+					<div class="ebProgressBar">
+						<div class="ebProgressBar-content">
+							<progress class="ebProgressBar-bar ebProgressBar-bar" min="0"
+								max="100" value="0" style="display: none;"></progress>
+							<span class="ebProgressBar-value ebProgressBar-value"></span>
+						</div>
+					</div>
+					<div class="noProgressBar" style="display: inline-block;">Not
+						Available</div>
+				</td>
+				<td class="elWfmgrWidgets-wStatusCell"><i
+					class="ebIcon elWfmgrWidgets-wStatusCell-icon"></i> <span
+					class="elWfmgrWidgets-wStatusCell-caption">In Progress</span></td>
+				<td>2018-04-19 11:27:49</td>
+				<td></td>
+				<td style="padding-left: 0; padding-right: 0; width: 0;"></td>
+			</tr>
+		</table>
+
+		<div th:if="${currentStep == 5}">
+			<button type="button" class="ebSelect-header" onclick="this.style.color='red'">
+				<span class="ebSelect-value">选择</span> <span
+					class="ebSelect-iconHolder"><i
+					class="ebIcon ebIcon_small ebIcon_downArrow_10px"></i></span>
+			</button>
+			<div class="ebComponentList-items">
+				<div class="ebComponentList-item" title="vmtas_test" onclick="this.style.color='red'">vmtas_test</div>
+				<div class="ebComponentList-item ebComponentList-item_focused"
+					title="vICSCF11" onclick="this.style.color='red'">vICSCF11</div>
+				<div class="ebComponentList-info"></div>
+				<div class="ebComponentList-loader">
+					<div class="ebLoader">
+						<div class="ebLoader-Holder">
+							<span class="ebLoader-Dots ebLoader-Dots_size_small"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<input
+				class="ebInput ebInput_labeled_top ebInput_width_xLong ebInput_status_none"
+				placeholder="" required="true" type="text">
+			<div class="elWfmgrWidgets-WfTaskForm-btnBorder"
+				style="display: block;">
+				<button class="ebBtn ebBtn_color_paleBlue" type="button"
+					onclick="document.forms['aform'].submit()">
+					<span class="ebBtn-caption">Submit</span>
+				</button>
+				<button class="ebBtn elWfmgrWidgets-WfTaskForm-ebBtn_formBtn"
+					type="button">
+					<span class="ebBtn-caption">Reset</span>
+				</button>
+			</div>
+		</div>
+
+		<table th:if="${currentStep == 1}"
+			class="table table-hover table-bordered table-striped"
+			data-plugin="PinColumns"
+			>
+			<thead>
+				<tr>
+					<th style="box-sizing: border-box; width: 200px;"
+						class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable">
+						<div class="ebTable-header">
+							<span class="ebTable-headerText">Name</span> <span
+								class="ebTable-headerSort ebSort"><i
+								class="ebSort-arrow_up"></i><i class="ebSort-arrow_down"></i></span>
+							<div class="ebTable-headerResize"></div>
+						</div>
+					</th>
+					<th style="width: 0px; padding: 0px;"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="ebTableRow">
+					<td>Heal VNF</td>
+					<td style="width: 0px; padding: 0px;"></td>
+				</tr>
+				<tr class="ebTableRow">
+					<td>Instantiate VNF</td>
+					<td style="width: 0px; padding: 0px;"></td>
+				</tr>
+				<tr class="ebTableRow">
+					<td>NR-Upgrade VNF</td>
+					<td style="width: 0px; padding: 0px;"></td>
+				</tr>
+				<tr class="ebTableRow">
+					<td>Scale-In VNF</td>
+					<td style="width: 0px; padding: 0px;"></td>
+				</tr>
+				<tr class="ebTableRow" ondblclick="document.forms['aform'].submit()">
+					<td>Scale-Out vHSS VNF</td>
+					<td style="width: 0px; padding: 0px;"></td>
+				</tr>
+				<tr class="ebTableRow">
+					<td>Terminate VNF</td>
+					<td style="width: 0px; padding: 0px;"></td>
+				</tr>
+			</tbody>
+		</table>
+			<footer th:replace="fragments::footer"></footer>
+	</div>
+</body>

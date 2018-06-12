@@ -1,0 +1,40 @@
+.logo {
+	float: left;
+	background: url(ich.png) no-repeat scroll -275px -3px transparent;
+	display: block;
+	height: 28px;
+	width: 21px;
+	margin: 1em 1em 1em 0em;
+	text-indent: -999em;
+}
+
+/** loading **/
+#loading-mask {
+	position: absolute;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	overflow:hidden;
+	background-color: rgba(0, 0, 0, 0.15);
+}
+
+#loading-mask .loading-pic {
+	width: 32px;
+	height: 32px;
+	background: url("loading005.gif") center center no-repeat;
+	margin-left: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -16px;
+	margin-top: -16px;
+}
+
+label.width100 {
+	width: 100px;
+}
+
+select {
+	margin-top:7px;
+}

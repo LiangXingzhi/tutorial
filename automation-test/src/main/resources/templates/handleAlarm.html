@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:replace="fragments::commonCss" />
+<body>
+<div th:replace="fragments::nav (class1='active', class2='')"></div>
+<div class="container">
+    <div class="page-header">
+        <h3>
+            告警基本信息页<small></small>
+        </h3>
+    </div>
+    <table class="table table-hover table-bordered table-striped">
+        <caption>告警列表</caption>
+        <tr>
+            <th>TraceId</th>
+            <th>type</th>
+            <th>source</th>
+            <th>alarm_raise_time</th>
+            <th>status</th>
+            <th>start_time</th>
+            <th>end_time</th>
+            <th>wf_instance</th>
+            <th>try_time</th>
+        </tr>
+        <tr th:each="alarm : ${alarms}">
+            <td th:text="${alarm.traceId}"></td>
+            <td th:text="${alarm.type}"></td>
+            <td th:text="${alarm.source}"></td>
+            <td th:text="${alarm.alarm_raise_time}"></td>
+            <td th:text="${alarm.status}"></td>
+            <td th:text="${alarm.start_time}"></td>
+            <td th:text="${alarm.end_time}"></td>
+            <td th:text="${alarm.wf_instance}"></td>
+            <td th:text="${alarm.retry_time}"></td>
+            <!-- <td><a class="btn btn-link" th:href="${'/ne/'+ element.elementName}" role="button">管理</a></td> -->
+            <!--<td><a class="btn btn-link"-->
+            <!--th:href="${'/ne/'+ elementStat.index}" role="button">管理</a></td>-->
+        </tr>
+
+        <tr th:if="${#lists.isEmpty(alarms)}">
+            <td colspan="6">没有记录</td>
+        </tr>
+    </table>
+    <!--<span th:text="${pageNum}"></span>-->
+<!--     <a href="/wf-orchestrator/alarm?pageNum=1">第1页</a> <a href="/wf-orchestrator/alarm?pageNum=2">第2页</a> <a
+        href="/wf-orchestrator/alarm?pageNum=3">第3页</a> <a href="/wf-orchestrator/alarm?pageNum=4">第4页</a> <a
+        href="/wf-orchestrator/alarm?pageNum=5">第5页</a> <a href="/wf-orchestrator/alarm?pageNum=6">第6页</a> -->
+
+    <footer th:replace="fragments::footer"></footer>
+</div>
+</body>
+</html>

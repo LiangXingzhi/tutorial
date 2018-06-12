@@ -1,0 +1,297 @@
+# xpath=//input[@name=myButton' and @type='submit']
+  procedures:
+    - name: vHSS01
+      interestedAlarms: [vHSS01, vPGW]
+      actionSteps:
+        - name: get_page
+          action: get
+          by:
+          target: http://vnfuser:Clouduser123@172.168.110.15/index.html#workflows/workflow/vHSS.--.Scale-Out%20vHSS%20VNF
+#          target: http://vnfuser:Clouduser123@172.168.110.15/index.html#workflows/workflow/vHSS.--.Scale-Out%20vHSS%20VNF/startworkflow/vHSS.--.Scale-Out%20vHSS%20VNF?goto=#workflows/workflow/vHSS.--.Scale-Out%20vHSS%20VNF
+#          target: http://admin:admin123@localhost:8088/wf-orchestrator/index
+        - name: click_NewInstance
+          action: click
+          by: xpath
+          target: //button[contains(text(),'Start a New Instance')]
+        - name: refresh_afterNew
+          action: refresh
+          by:
+          target:
+        - name: eval_instanceName
+          action: eval
+          by: className
+          target: elWfmgrWidgets-WfStartForm-instanceName-input
+        - name: submit_instanceName
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+        - name: click_instanceName
+          action: click
+          by: xpath
+          target: //td[contains(text(),"{{eval_instanceName}}")]
+        - name: click_detail
+          action: click
+          by: xpath
+          target: //a[contains(text(),'View Details')]
+        - name: refresh_detail
+          action: refresh
+          by:
+          target:
+        - name: click_tasks
+          action: click
+          by: xpath
+          target: //div[contains(text(), 'Tasks')]
+        - name: clickSelectVNFButton
+          action: click
+          by: cssSelector
+          target: button.ebSelect-header
+        - name: selectVNF
+          action: click
+          by: xpath
+          target: //div[contains(text(), 'vHSS01-1.19')]
+        - name: input_vm_quantity
+          action: eval
+          by: cssSelector
+          target: input.ebInput_width_xLong
+          value: 2
+        - name: submit_detail
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+
+    - name: vMME01
+      interestedAlarms: vMME01
+      actionSteps:
+        - name: get_page
+          action: get
+          by:
+          target: http://vnfuser:Clouduser123@172.168.110.15/index.html#workflows/workflow/sgsn-mme_lcm_wf_heat.--.Scale%20vSGSN-MME%20on%20OpenStack
+        - name: click_NewInstance
+          action: click
+          by: xpath
+          target: //button[contains(text(),'Start a New Instance')]
+        - name: refresh_afterNew
+          action: refresh
+          by:
+          target:
+        - name: eval_instanceName
+          action: eval
+          by: className
+          target: elWfmgrWidgets-WfStartForm-instanceName-input
+        - name: submit_instanceName
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+        - name: click_instanceName
+          action: click
+          by: xpath
+          target: //td[contains(text(),"{{eval_instanceName}}")]
+        - name: click_detail
+          action: click
+          by: xpath
+          target: //a[contains(text(),'View Details')]
+        - name: refresh_detail
+          action: refresh
+          by:
+          target:
+        - name: clickSelectVNFButton
+          action: click
+          by: cssSelector
+          target: button.ebSelect-header
+        - name: selectVNF
+          action: click
+          by: xpath
+          target: //div[@title='vMME01']
+        - name: submit_vnf
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+
+
+
+    - name: vSGW01
+      interestedAlarms: vSGW01
+      actionSteps:
+        - name: get_page
+          action: get
+          by:
+          target: http://vnfuser:Clouduser123@172.168.110.15/index.html#workflows/workflow/epg_lcm_wf_heat.--.Scale%20vEPG%20on%20OpenStack
+        - name: click_NewInstance
+          action: click
+          by: xpath
+          target: //button[contains(text(),'Start a New Instance')]
+        - name: refresh_afterNew
+          action: refresh
+          by:
+          target:
+        - name: eval_instanceName
+          action: eval
+          by: className
+          target: elWfmgrWidgets-WfStartForm-instanceName-input
+        - name: submit_instanceName
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+        - name: click_instanceName
+          action: click
+          by: xpath
+          target: //td[contains(text(),"{{eval_instanceName}}")]
+        - name: click_detail
+          action: click
+          by: xpath
+          target: //a[contains(text(),'View Details')]
+        - name: refresh_detail
+          action: refresh
+          by:
+          target:
+        - name: clickSelectVNFButton
+          action: click
+          by: cssSelector
+          target: button.ebSelect-header
+        - name: selectVNF
+          action: click
+          by: xpath
+          target: //div[@title='vSGW01']
+        - name: submit_vnf
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+        - name: clickSelectAspectButton
+          action: click
+          by: xpath
+          target: //button[@class='ebSelect-header')][2]
+        - name: selectAspect
+          action: click
+          by: xpath
+          target: //div[@title='CP']
+        - name: submit_Aspect
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+
+    - name: vSAPC01
+      interestedAlarms: vSAPC01
+      actionSteps:
+        - name: get_page
+          action: get
+          by:
+          target: http://vnfuser:Clouduser123@172.168.110.15/index.html#workflows/workflow/sapc_lcm_wf_heat.--.Scale%20SAPC%20on%20OpenStack
+        - name: click_NewInstance
+          action: click
+          by: xpath
+          target: //button[contains(text(),'Start a New Instance')]
+        - name: refresh_afterNew
+          action: refresh
+          by:
+          target:
+        - name: eval_instanceName
+          action: eval
+          by: className
+          target: elWfmgrWidgets-WfStartForm-instanceName-input
+        - name: submit_instanceName
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+        - name: click_instanceName
+          action: click
+          by: xpath
+          target: //td[contains(text(),"{{eval_instanceName}}")]
+        - name: click_detail
+          action: click
+          by: xpath
+          target: //a[contains(text(),'View Details')]
+        - name: refresh_detail
+          action: refresh
+          by:
+          target:
+        - name: clickSelectVNFButton
+          action: click
+          by: cssSelector
+          target: button.ebSelect-header
+        - name: selectVNF
+          action: click
+          by: xpath
+          target: //div[@title='vSAPC01']
+        - name: submit_vnf
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+        - name: clickSelectScaleTypeButton
+          action: click
+          by: cssSelector
+          target: button.ebSelect-header
+        - name: selectScaleType
+          action: click
+          by: xpath
+          target: //div[@title='Out']
+        - name: submit_ScaleType
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+
+
+
+    - name: vPGW01
+      interestedAlarms: vPGW01
+      actionSteps:
+        - name: get_page
+          action: get
+          by:
+          target: http://vnfuser:Clouduser123@172.168.110.15/index.html#workflows/workflow/epg_lcm_wf_heat.--.Scale%20vEPG%20on%20OpenStack
+        - name: click_NewInstance
+          action: click
+          by: xpath
+          target: //button[contains(text(),'Start a New Instance')]
+        - name: refresh_afterNew
+          action: refresh
+          by:
+          target:
+        - name: eval_instanceName
+          action: eval
+          by: className
+          target: elWfmgrWidgets-WfStartForm-instanceName-input
+        - name: submit_instanceName
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+        - name: click_instanceName
+          action: click
+          by: xpath
+          target: //td[contains(text(),"{{eval_instanceName}}")]
+        - name: click_detail
+          action: click
+          by: xpath
+          target: //a[contains(text(),'View Details')]
+        - name: refresh_detail
+          action: refresh
+          by:
+          target:
+        - name: clickSelectVNFButton
+          action: click
+          by: cssSelector
+          target: button.ebSelect-header
+        - name: selectVNF
+          action: click
+          by: xpath
+          target: //div[@title='vPGW01']
+        - name: submit_vnf
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+        - name: clickSelectAspectButton
+          action: click
+          by: xpath
+          target: //button[@class='ebSelect-header')][2]
+        - name: selectAspect
+          action: click
+          by: xpath
+          target: //div[@title='CP']
+        - name: submit_Aspect
+          action: click
+          by: cssSelector
+          target: button.ebBtn_color_paleBlue
+
+
+
+
+
