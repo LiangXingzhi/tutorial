@@ -1,12 +1,4 @@
-package com.ericsson.ct.cloud.nfvi.config;
-
-import com.ericsson.ct.cloud.nfvi.mapper.AdminMapper;
-
-import auto.test.Admin;
-import auto.test.EnvironmentContext;
-import auto.test.mapper.HandleAlarmMapper;
-import auto.test.mapper.OriginAlarmMapper;
-import auto.test.snmp.MultiThreadTrapReceiver;
+package auto.test.config;
 
 import javax.annotation.PostConstruct;
 
@@ -18,6 +10,13 @@ import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 import org.yaml.snakeyaml.Yaml;
+
+import auto.test.Admin;
+import auto.test.EnvironmentContext;
+import auto.test.mapper.AdminMapper;
+import auto.test.mapper.HandleAlarmMapper;
+import auto.test.mapper.OriginAlarmMapper;
+import auto.test.snmp.MultiThreadTrapReceiver;
 
 @Component
 public class InitData {

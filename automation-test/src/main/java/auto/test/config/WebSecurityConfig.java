@@ -1,4 +1,4 @@
-package com.ericsson.ct.cloud.nfvi.config;
+package auto.test.config;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

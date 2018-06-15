@@ -1,13 +1,9 @@
-package com.ericsson.ct.cloud.nfvi.scheduler;
+package auto.test.scheduler;
 
-import com.ericsson.ct.cloud.nfvi.mapper.AdminMapper;
-import com.ericsson.ct.cloud.nfvi.selenium.ActionStep;
-import com.ericsson.ct.cloud.nfvi.selenium.Browser;
-import com.ericsson.ct.cloud.nfvi.selenium.Procedure;
-
-import auto.test.Admin;
-import auto.test.alarm.HandleAlarmBean;
-import auto.test.mapper.HandleAlarmMapper;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.time.DateUtils;
@@ -19,11 +15,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.Yaml;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import auto.test.Admin;
+import auto.test.alarm.HandleAlarmBean;
+import auto.test.mapper.AdminMapper;
+import auto.test.mapper.HandleAlarmMapper;
+import auto.test.selenium.ActionStep;
+import auto.test.selenium.Browser;
+import auto.test.selenium.Procedure;
 
 @Component
 public class ScheduledTask {

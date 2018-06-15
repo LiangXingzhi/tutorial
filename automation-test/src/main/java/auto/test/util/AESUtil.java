@@ -1,4 +1,4 @@
-package com.ericsson.ct.cloud.nfvi.util;
+package auto.test.util;
 
 import java.security.InvalidKeyException;
 import java.security.Key;

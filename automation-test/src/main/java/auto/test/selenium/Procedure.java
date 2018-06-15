@@ -1,4 +1,4 @@
-package com.ericsson.ct.cloud.nfvi.selenium;
+package auto.test.selenium;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;

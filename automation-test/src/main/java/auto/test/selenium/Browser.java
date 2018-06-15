@@ -1,4 +1,4 @@
-package com.ericsson.ct.cloud.nfvi.selenium;
+package auto.test.selenium;
 
 import java.util.HashMap;
 import java.util.Map;

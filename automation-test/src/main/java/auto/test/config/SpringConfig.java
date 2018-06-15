@@ -1,4 +1,4 @@
-package com.ericsson.ct.cloud.nfvi.config;
+package auto.test.config;
 
 import org.springframework.context.annotation.Configuration;
 

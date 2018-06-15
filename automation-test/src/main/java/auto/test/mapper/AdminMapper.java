@@ -1,6 +1,7 @@
-package com.ericsson.ct.cloud.nfvi.mapper;
+package auto.test.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

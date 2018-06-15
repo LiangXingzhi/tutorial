@@ -1,29 +1,23 @@
-package com.ericsson.ct.cloud.nfvi.controller;
+package auto.test.controller;
 
-import com.ericsson.ct.cloud.nfvi.mapper.AdminMapper;
-import com.ericsson.ct.cloud.nfvi.selenium.Procedure;
-
-import auto.test.Admin;
-import auto.test.EnvironmentContext;
-import auto.test.alarm.OriginAlarmBean;
-import auto.test.alarm.OriginAlarmService;
-
-import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.yaml.snakeyaml.DumperOptions;
-import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 import org.yaml.snakeyaml.Yaml;
+
+import auto.test.Admin;
+import auto.test.EnvironmentContext;
+import auto.test.alarm.OriginAlarmService;
+import auto.test.mapper.AdminMapper;
+import auto.test.selenium.Procedure;
 
 @Controller
 public class HomeController {
