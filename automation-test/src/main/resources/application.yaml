@@ -9,24 +9,10 @@ spring:
   messages: 
     basename: messages
   datasource: 
-    name: wf_orchestrator
+    name: automation-test
     url: jdbc:derby:out/automation_test;create=true  
     type: com.alibaba.druid.pool.DruidDataSource  
     driver-class-name: org.apache.derby.jdbc.EmbeddedDriver  
-    initialSize: 5  
-    minIdle: 5  
-    maxActive: 20  
-    maxWait: 60000  
-    timeBetweenEvictionRunsMillis: 60000  
-    minEvictableIdleTimeMillis: 300000  
-    filters: stat  
-    validationQuery: select 1 from sysibm.sysdummy1
-    testWhileIdle: true  
-    testOnBorrow: false  
-    testOnReturn: false  
-    poolPreparedStatements: true  
-    maxOpenPreparedStatements: 20  
-    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000  
 
 logging: 
     config: classpath:logback.xml
@@ -43,7 +29,7 @@ webdriver:
   timeout: 10
 
 
-jobs:
+jobs: 
   # job Execute the annotated method with a fixed period in milliseconds between
   # the end of the last invocation and the start of the next.
   fixedDelay: 10000

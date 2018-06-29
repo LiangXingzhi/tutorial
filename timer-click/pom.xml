@@ -20,6 +20,7 @@
 							<mainClass>
 								ui.TimerClick
 							</mainClass>
+							<finalName>timer-click</finalName>
 						</configuration>
 					</execution>
 				</executions>

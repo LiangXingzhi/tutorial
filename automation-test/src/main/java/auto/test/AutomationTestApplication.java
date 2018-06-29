@@ -6,9 +6,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-public class WfOrchestratorApplication {
+public class AutomationTestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WfOrchestratorApplication.class, args);
+		SpringApplication.run(AutomationTestApplication.class, args);
 	}
 }

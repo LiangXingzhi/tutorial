@@ -1,0 +1,2 @@
+--create table OperationStep(stepId varchar(40) primary key, processId varchar(40), serial INTEGER,  operationType varchar(30), byType varchar(30), byCondition varchar(100),  stepName varchar(30), stepValue varchar(100), failPolicy varchar(30));
+--create table OperationalProcess(processId varchar(40) primary key, processName varchar(30));

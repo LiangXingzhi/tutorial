@@ -11,7 +11,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,7 +28,6 @@ public class Browser {
 	static final String BY_XPATH = "xpath";
 	static final String BY_CLASSNAME = "className";
 	static final String BY_CSSSELECTOR = "cssSelector";
-	
 
 	static Logger logger = LoggerFactory.getLogger(Browser.class);
 	private WebDriver driver;
@@ -37,7 +35,6 @@ public class Browser {
 
 	private int timeout;
 	private int wait;
-	private String instanceName;
 
 	public Browser(String driverType, int wait, int timeout) {
 		this.timeout = timeout;
@@ -151,12 +148,12 @@ public class Browser {
 		return value;
 	}
 
-	public boolean execute(ActionStep actionStep) {
-		logger.info("step [" + actionStep.getName() + "] start...");
+	public boolean execute(OperationStep operationStep) {
+		logger.info("step [" + operationStep.getStepName() + "] start...");
 		boolean result = false;
 		// process by condition
-		String by = actionStep.getBy();
-		String target = actionStep.getTarget().replace("{{", "${").replace("}}", "}");
+		String by = operationStep.getByType();
+		String target = operationStep.getByCondition().replace("{{", "${").replace("}}", "}");
 		if (target.matches(".*\\$\\{.*\\}.*")) {
 			target = StrSubstitutor.replace(target, context);
 		}
@@ -173,12 +170,10 @@ public class Browser {
 			break;
 		}
 		// process value
-		String value = actionStep.getValue();
-		if (StringUtils.isNotEmpty(value) && value.contains("currentTimeMillis()")) {
-			// TODO: use freemarker or expression
-		}
+		String value = operationStep.getStepValue();
+
 		// process action
-		String action = actionStep.getAction();
+		String action = operationStep.getOperationType();
 
 		if (ACTION_GET.equals(action)) {
 			get(target);
@@ -194,11 +189,10 @@ public class Browser {
 			result = true;
 		} else if (ACTION_EVAL.equals(action)) {
 			String resultValue = eval(byCondition, value);
-			context.put(actionStep.getName(), resultValue);
+			context.put(operationStep.getStepName(), resultValue);
 			result = true;
 		}
-		logger.info("step [" + actionStep.getName() + "] end, result is " + result);
-
+		logger.info("step [" + operationStep.getStepName() + "] end, result is " + result);
 		return result;
 	}
 

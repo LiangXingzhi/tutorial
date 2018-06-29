@@ -1,6 +1,5 @@
 package ui;
 
-
 import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -27,8 +26,15 @@ public class TimerClick {
 				Robot robot = new Robot();
 				// MouseInfo.getPointerInfo().getLocation()
 				// + new Random().nextInt() % frame.getHeight()
-				robot.mouseMove(frame.getX() + 30 + Math.abs(new Random().nextInt() % 211),
-						frame.getY() + 30 + Math.abs(new Random().nextInt() % 211));
+				frame.setVisible(true);
+				frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				frame.toFront();
+				int randomX = Math.abs(new Random().nextInt() % (frame.getWidth() - 31));
+				randomX = randomX < 17 ? randomX + 17 : randomX;
+
+				int randomY = Math.abs(new Random().nextInt() % (frame.getHeight() - 47));
+				randomY = randomY < 41 ? randomY + 41 : randomY;
+				robot.mouseMove(frame.getX() + randomX, frame.getY() + randomY);
 				robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
 				robot.delay(1000);
 				robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
@@ -70,9 +76,8 @@ public class TimerClick {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(0, 0, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		textArea = new JTextArea();
 		frame.getContentPane().add(textArea, BorderLayout.CENTER);
 	}
