@@ -27,7 +27,12 @@ public class TimerClick {
 				// MouseInfo.getPointerInfo().getLocation()
 				// + new Random().nextInt() % frame.getHeight()
 				frame.setVisible(true);
+				//如果窗口被最小化，那么重新打开窗口
+				// frame.setState(java.awt.Frame.ICONIFIED);
+				frame.setState(java.awt.Frame.NORMAL);
+				// 将窗口最大化
 				frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				// 将窗口作为当前窗口
 				frame.toFront();
 				int randomX = Math.abs(new Random().nextInt() % (frame.getWidth() - 31));
 				randomX = randomX < 17 ? randomX + 17 : randomX;

@@ -17,6 +17,12 @@ spring:
 logging: 
     config: classpath:logback.xml
 
+logback: 
+  root: /var/log/automationtest
+  appname: ecaprules
+  maxhistory: 30
+  maxfilesize: 1MB
+
 webdriver:
   gecko:
     driver: classpath:/geckodriver
